@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CommandLineStoreWeb.Profiles
+namespace CommandLineStore.Api.Profiles
 {
-    public class CommandProfile : Profile
+    public class CommandProfiles : Profile
     {
-        public CommandProfile()
+        public CommandProfiles()
         {
             CreateMap<CommandLine, CommandLineViewDto>();
             CreateMap<CommandLineViewDto, CommandLine>();

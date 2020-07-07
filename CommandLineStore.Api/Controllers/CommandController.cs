@@ -9,11 +9,10 @@ using CommandLineStoreDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace CommandLineStoreWeb.Controllers
+namespace CommandLineStore.Api.Controllers
 {
-    [Route("api/command")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CommandController : ControllerBase
     {
@@ -32,12 +31,12 @@ namespace CommandLineStoreWeb.Controllers
             return Ok(_mapper.Map<List<CommandLineViewDto>>(await _commandLineData.GetAll()));
         }
 
-        [HttpGet("{id}", Name ="Get")]
+        [HttpGet("{id}", Name = "Get")]
         public async Task<ActionResult<CommandLineViewDto>> Get(string id)
         {
             var foundCommand = await _commandLineData.GetById(id);
 
-            if(foundCommand == null)
+            if (foundCommand == null)
                 return NotFound(id);
 
             return Ok(_mapper.Map<CommandLineViewDto>(foundCommand));
@@ -46,11 +45,11 @@ namespace CommandLineStoreWeb.Controllers
         [HttpPost]
         public async Task<ActionResult<CommandLineViewDto>> Add(CommandLineCreateDto commandDto)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var createCommand = _mapper.Map<CommandLine>(commandDto);
 
-                if(await _commandLineData.Add(createCommand))
+                if (await _commandLineData.Add(createCommand))
                     return CreatedAtRoute(nameof(Get), new { id = createCommand.Id }, createCommand);
             }
 
@@ -62,13 +61,13 @@ namespace CommandLineStoreWeb.Controllers
         {
             var deleteCommand = await _commandLineData.GetById(id);
 
-            if(deleteCommand == null)
+            if (deleteCommand == null)
             {
                 return NotFound(deleteCommand);
             }
             else
             {
-                if(await _commandLineData.Delete(id))
+                if (await _commandLineData.Delete(id))
                     return NoContent();
             }
 
@@ -80,7 +79,7 @@ namespace CommandLineStoreWeb.Controllers
         {
             var updateCommand = await _commandLineData.GetById(id);
 
-            if(updateCommand == null)
+            if (updateCommand == null)
                 return NotFound(updateCommand);
 
             var commandToPatch = _mapper.Map<CommandLineOperationDto>(updateCommand);
