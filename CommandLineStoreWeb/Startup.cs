@@ -49,6 +49,8 @@ namespace CommandLineStoreWeb
             });
 
             services.AddScoped<ICommandLineData, CommandLineData>();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +76,13 @@ namespace CommandLineStoreWeb
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Command Line Api");
             });
         }
     }
