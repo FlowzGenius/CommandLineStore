@@ -14,6 +14,7 @@ using CommandLineStore.DataContext;
 using Microsoft.EntityFrameworkCore;
 using CommandLineStore.DataAccess.Contract;
 using CommandLineStore.DataAccess;
+using AutoMapper;
 
 namespace CommandLineStoreWeb
 {
@@ -38,6 +39,8 @@ namespace CommandLineStoreWeb
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("CommandCnn"));
             });
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ICommandLineData, CommandLineData>();
         }
