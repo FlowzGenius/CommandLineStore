@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using CommandLineStore.DataAccess.Contract;
 using CommandLineStore.DataAccess;
 using AutoMapper;
+using Newtonsoft.Json.Serialization;
 
 namespace CommandLineStoreWeb
 {
@@ -41,6 +42,11 @@ namespace CommandLineStoreWeb
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             services.AddScoped<ICommandLineData, CommandLineData>();
         }
