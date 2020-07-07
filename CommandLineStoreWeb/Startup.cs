@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CommandLineStoreWeb.Data;
+using CommandLineStore.DataContext;
+using Microsoft.EntityFrameworkCore;
+using CommandLineStore.DataAccess.Contract;
+using CommandLineStore.DataAccess;
 
 namespace CommandLineStoreWeb
 {
@@ -29,6 +33,13 @@ namespace CommandLineStoreWeb
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            services.AddDbContext<CommandContext>(opt =>
+            {
+                opt.UseSqlServer(Configuration.GetConnectionString("CommandCnn"));
+            });
+
+            services.AddScoped<ICommandLineData, CommandLineData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
