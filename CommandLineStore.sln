@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineStore.Entities",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineStore.DataContext", "CommandLineStore.DataContext\CommandLineStore.DataContext.csproj", "{B1D24B48-6B1C-48EC-8B71-42C64EA89153}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineStore.DataAccess", "CommandLineStore.DataAccess\CommandLineStore.DataAccess.csproj", "{34890ED6-84F8-4BAE-A67A-A3771C0CE0D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B1D24B48-6B1C-48EC-8B71-42C64EA89153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1D24B48-6B1C-48EC-8B71-42C64EA89153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1D24B48-6B1C-48EC-8B71-42C64EA89153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34890ED6-84F8-4BAE-A67A-A3771C0CE0D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34890ED6-84F8-4BAE-A67A-A3771C0CE0D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34890ED6-84F8-4BAE-A67A-A3771C0CE0D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34890ED6-84F8-4BAE-A67A-A3771C0CE0D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
