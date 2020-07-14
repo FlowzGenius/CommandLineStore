@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommandLineStore.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/command")]
     [ApiController]
     public class CommandController : ControllerBase
     {

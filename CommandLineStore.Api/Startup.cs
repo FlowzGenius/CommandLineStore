@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CommandLineStore.DataAccess;
+using CommandLineStore.DataAccess.Contract;
 using CommandLineStore.DataContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +35,8 @@ namespace CommandLineStore.Api
             services.AddControllers().AddNewtonsoftJson(s => {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
+
+            services.AddScoped<ICommandLineData, CommandLineData>();
 
             services.AddSwaggerGen(c =>
             {
